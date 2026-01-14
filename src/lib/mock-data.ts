@@ -11,9 +11,7 @@ export type Folder = {
   id: string
   name: string
   type: "folder"
-  url?: string
   parent: string | null
-  size?: string
 }
 
 export const mockFolders: Folder[] = [
