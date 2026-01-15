@@ -1,5 +1,5 @@
 import DriveContents from "~/app/drive-contents"
-import { getFiles, getFolders, getAllParentsForFolder } from "~/server/db/queries"
+import { QUERIES } from "~/server/db/queries"
 
 export default async function GoogleDriveClone(props: {
     params: Promise<{ folderId: string }>
@@ -13,7 +13,7 @@ export default async function GoogleDriveClone(props: {
 
     const folderId = parsedFolderId
 
-    const [files, folders, parents] = await Promise.all([getFiles(folderId), getFolders(folderId), getAllParentsForFolder(folderId)])
+    const [files, folders, parents] = await Promise.all([QUERIES.getFiles(folderId), QUERIES.getFolders(folderId), QUERIES.getAllParentsForFolder(folderId)])
 
     return <DriveContents files={files} folders={folders} parents={parents} />
 }
